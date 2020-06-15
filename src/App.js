@@ -1,26 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import SearchBox from "./components/SearchBox";
+import classNames from 'classnames';
+class App extends Component {
+  constructor(){
+    super();
+    
+    this.state={
+      isFocused:false
+    }
+    this.onFocus=this.onFocus.bind(this);
+    this.onBlur=this.onBlur.bind(this);
+  }
+onFocus(){
+  this.setState={
+    isFocused:true
+  }
+}
+onBlur(){
+  this.setState={
+    isFocused:false
+  }
+}
+  render(){
+    const { isFocused }=this.state;
 
-function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <SearchBox isFocused={isFocused} onFocus={this.onFocus} onBlur={this.onBlur}/>
+      
     </div>
   );
+}
 }
 
 export default App;
